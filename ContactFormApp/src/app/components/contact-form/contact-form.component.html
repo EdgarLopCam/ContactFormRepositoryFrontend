@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="form-wrapper">
+    <app-language-selector></app-language-selector>
+    <h2>{{ translationTexts['form_title'] || 'Contact Form' }}</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+      <div>
+        <label for="email">{{ translationTexts['email_label'] || 'Email' }}</label>
+        <input id="email" formControlName="email" type="email">
+      </div>
+      <div>
+        <label for="firstName">{{ translationTexts['first_name_label'] || 'First Name' }}</label>
+        <input id="firstName" formControlName="firstName" type="text">
+      </div>
+      <div>
+        <label for="lastName">{{ translationTexts['last_name_label'] || 'Last Name' }}</label>
+        <input id="lastName" formControlName="lastName" type="text">
+      </div>
+      <div>
+        <label for="comments">{{ translationTexts['comments_label'] || 'Comments' }}</label>
+        <textarea id="comments" formControlName="comments"></textarea>
+      </div>
+      <div>
+        <label for="attachment">{{ translationTexts['attachment_label'] || 'Attachment' }}</label>
+        <input id="attachment" type="file" (change)="onFileChange($event)">
+      </div>
+      <button type="submit" [disabled]="!contactForm.valid">{{ translationTexts['submit_button'] || 'Submit' }}</button>
+    </form>
+  </div>
+</div>
